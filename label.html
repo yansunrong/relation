@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Force based label placement</title>
+	<script type="text/javascript" src="d3.v3.js"></script>
+</head>
+<body>
+
+	<script type="text/javascript" charset="utf-8">
+
+var svg = d3.select("body").append("svg").style("width","300px").style("height","300px").style("outline","1px dashed red")
+
+var rect = svg.append("rect").style("background","blue").attr("width","50px").attr("height","50px").attr("x","20px").attr("y","20px");
+svg.call(d3.behavior.zoom().on("zoom", function(){
+  trans=d3.event.translate;
+  scale=d3.event.scale;
+  rect.attr("transform",
+      "translate(" + trans + ")"  +
+       " scale(" + scale + ")");
+}))
+</script>
+</body>
+</html>
