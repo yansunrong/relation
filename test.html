@@ -20,13 +20,13 @@
     color:#ccc;
     font-size:10px;
 }
-#box{width:300px;overflow: hidden;}
+#box{margin:0 auto;width:600px; border:2px dashed #ccc;}
 </style>
 <body>
 <div id="box"></div>
 <script>
 
-    var width = 300,
+    var width = 600,
     height = 500 ;
     var mousedown_node = null;
     var svg = d3.select("#box").append("svg")
@@ -34,13 +34,14 @@
     .attr("height", height)
     .attr("id", "svg")
     .attr("pointer-events", "all")
-    .style("outline","1px dashed red");
 
     var vis = svg.append('svg:g')
     .call(d3.behavior.zoom().on("zoom", rescale))
     .on("dblclick.zoom", null)
+    .attr("width", width)
 
      var g = vis.append('svg:g')
+    .attr("width", width)
     .on("mousedown",function(){
         if(!mousedown_node){
             vis.call(d3.behavior.zoom().on("zoom", rescale));
@@ -124,16 +125,14 @@
 
     node.append("image")
     .attr("xlink:href", "1.jpg")
-    .attr("x", -8)
-    .attr("y", -8)
+    .attr("x", -25)
+    .attr("y", -25)
     .attr("width", 50)
     .attr("height", 50);
 
 
   var relation = g.selectAll(".relation").data(json.links)
   relation.enter().append("text")
-  //  .attr("dx", 12)
-  //  .attr("dy", ".35em")
     .attr("class", "relation")
     .text(function(d,i) { return d.relation });
 
