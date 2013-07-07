@@ -44,7 +44,7 @@
     .attr("width", width)
     .on("mousedown",function(){
         if(!mousedown_node){
-            vis.call(d3.behavior.zoom().on("zoom", rescale));
+            vis.call(d3.behavior.zoom().on("zoom", rescale).translate(trans).scale(scale));
         }
     })
     g.append('svg:rect')
