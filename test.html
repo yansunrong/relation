@@ -29,6 +29,9 @@
     var width = 600,
     height = 500 ;
     var mousedown_node = null;
+
+    var trans=[0,0];
+    var scale = 1;
     var svg = d3.select("#box").append("svg")
     .attr("width", width)
     .attr("height", height)
@@ -103,7 +106,7 @@
     .nodes(json.nodes)
     .links(json.links)
     .start();
-
+    var i = 0;
     var link = g.selectAll(".link")
     .data(json.links)
     .enter().append("line")
@@ -113,13 +116,20 @@
     .data(json.nodes)
     .enter().append("g")
     .attr("class", "node")
+    .on("touchstart",function(){
+        vis.call(d3.behavior.zoom().on("zoom", null))
+    })
+    .on("touchend",function(){
+       vis.call(d3.behavior.zoom().on("zoom", rescale).translate(trans).scale(scale));
+    })
     .on("mousedown",function(){
         mousedown_node =  true;
         vis.call(d3.behavior.zoom().on("zoom", null))
     })
     .on("mouseup",function(){
+        //alert(2)
         mousedown_node = false;
-        vis.call(d3.behavior.zoom().on("zoom", rescale))
+       vis.call(d3.behavior.zoom().on("zoom", rescale).translate(trans).scale(scale));
     })
     .call(force.drag);
 
