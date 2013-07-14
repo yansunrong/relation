@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html style="width: 100%;">
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+	<title></title>
+	<style type="text/css">
+
+body{overflow-x: hidden;}
+	</style>
+</head>
+<body>
+
+<h1>hello</h1>
+<h1>hello</h1>
+<h1>hello</h1>
+<h1>hello</h1>
+
+<div style="width:100%;overflow:hidden;">
+	<div  style="width:1000px;">
+	    * Element.insertBefore
+     [ method ]
+     **
+     * Inserts current object before the given one.
+     = (object) @Element
+    \*/
+    elproto.insertBefore = function (element) {
+        if (this.removed) {
+            return this;
+        }
+        var node = element.node || element[0].node;
+        node.parentNode.insertBefore(this.node, node);
+        R._insertbefore(this, element, this.paper);
+        return this;
+    };
+    elproto.blur = function (size) {
+    </div>
+</div>
+
+<div id="box" style="width:100%;overflow:auto">
+	111
+	<iframe id="ifr" src="index.html?1" frameborder="no" width="640px" border="0"></iframe>
+	222
+</div>
+
+<script type="text/javascript">
+
+var touchInitPos = 0;//手指初始位置
+var startPos = 0;//移动开始的位置
+var totalDist = 0;//移动的总距离
+document.getElementById('ifr').addEventListener('touchstart',function (e) {
+	if(e.touches.length !== 1){return;}//如果大于1个手指，则不处理
+	touchInitPos = e.touches[0].pageX; // 每次move的触点位置
+})
+
+document.getElementById('ifr').addEventListener('touchmove',function (e) {
+			if(e.touches.length !== 1){return;}//如果大于1个手指，则不处理
+			var currentX = e.touches[0].pageX;
+			totalDist = startPos + currentX - touchInitPos;
+			if (totalDist<5 ) {
+				this.style.WebkitTransform='translate3d(' +  totalDist+ 'px,0, 0)';
+				startPos = totalDist;
+			}
+			touchInitPos = currentX;
+		});
+
+</script>
+<h1>hello</h1>
+<h1>hello</h1>
+<h1>hello</h1>
+<h1>hello</h1>
+<h1>hello</h1>
+<h1>hello</h1>
+<h1>hello</h1>
+<h1>hello</h1>
+</body>
+</html>

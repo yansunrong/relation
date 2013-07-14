@@ -6,8 +6,8 @@
 <style>
 
 .link {
-  stroke: #ccc;
-   stroke-width: 5;
+   stroke: #5ba8f8;
+   stroke-width: 3;
 }
 
 .node text {
@@ -16,11 +16,10 @@
 }
 
 .relation{
-        
-    color:#ccc;
+    color:#fff;
     font-size:10px;
 }
-#box{margin:0 auto;width:600px; border:2px dashed #ccc;}
+#box{margin:0 auto;width:600px; border:2px dashed #ccc;background: #f1f1f1}
 </style>
 <body>
 <div id="box"></div>
@@ -93,7 +92,7 @@
             {"source":1,"target":3,"value":3,relation:"基友"},
             {"source":1,"target":4,"value":3,relation:"情人"},
             {"source":1,"target":5,"value":3,relation:"母子"},
-            {"source":1,"target":6,"value":3,relation:"朋友"},
+            {"source":1,"target":6,"value":3,relation:"朋友的"},
             {"source":2,"target":7,"value":3,relation:"基友"},
             {"source":2,"target":8,"value":3,relation:"基友"},
             {"source":2,"target":9,"value":3,relation:"基友"},
@@ -133,17 +132,53 @@
     })
     .call(force.drag);
 
+    node.append("clipPath").attr("id",function(d,i){return "clip"+i}).append("circle")
+    .attr("x", -25)
+    .attr("y", -25)
+    .attr("r", 25)
+
     node.append("image")
     .attr("xlink:href", "1.jpg")
+    .attr("clip-path",function(d,i){
+            return "url(#clip"+i+")";
+    })
     .attr("x", -25)
     .attr("y", -25)
     .attr("width", 50)
     .attr("height", 50);
 
+    node.append("circle")
+    .attr("x", -25)
+    .attr("y", -25)
+    .attr("r", 25)
+    .attr("stroke-width", 2)
+    .attr("stroke", "#5ba8f8")
+    .attr("fill","transparent")
+    ;
+
+
+    // node.append("image")
+    // .attr("xlink:href", "2.png")
+    // .attr("x", -25)
+    // .attr("y", -25)
+    // .attr("width", 50)
+    // .attr("height", 50);
+
+    // node.append("circle").attr("r",25).attr("fill","green").attr("stroke-width","1").attr("stoke","red");
 
   var relation = g.selectAll(".relation").data(json.links)
-  relation.enter().append("text")
-    .attr("class", "relation")
+
+  var textG = relation.enter().append("svg:g").attr("class", "relation").attr("fill","green").attr("stroke-width","1");
+    textG.append("circle").attr("r","10")
+    .attr("stroke","#5ba8f8")
+    .attr("stroke-width",2)
+    .attr("fill","#f1f1f1");
+
+    textG.append("text")
+    .attr("text-anchor","middle")
+    .attr("font-size","8px")
+    .attr("y",5)
+    .attr("fill","#5ba8f8")
     .text(function(d,i) { return d.relation });
 
     force.on("tick", function() {
