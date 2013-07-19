@@ -39,32 +39,32 @@ body{overflow-x: hidden;}
     </div>
 </div>
 
-<div id="box" style="width:100%;overflow:auto">
-	111
-	<iframe id="ifr" src="index.html?1" frameborder="no" width="640px" border="0"></iframe>
+<div id="box" style="width:100%;overflow:hidden;height:300px;">
+	1112
+	<iframe id="ifr" src="test.html?2" frameborder="no" width="100%" border="0" height="150"></iframe>
 	222
 </div>
 
 <script type="text/javascript">
 
-var touchInitPos = 0;//手指初始位置
-var startPos = 0;//移动开始的位置
-var totalDist = 0;//移动的总距离
-document.getElementById('ifr').addEventListener('touchstart',function (e) {
-	if(e.touches.length !== 1){return;}//如果大于1个手指，则不处理
-	touchInitPos = e.touches[0].pageX; // 每次move的触点位置
-})
-
-document.getElementById('ifr').addEventListener('touchmove',function (e) {
-			if(e.touches.length !== 1){return;}//如果大于1个手指，则不处理
-			var currentX = e.touches[0].pageX;
-			totalDist = startPos + currentX - touchInitPos;
-			if (totalDist<5 ) {
-				this.style.WebkitTransform='translate3d(' +  totalDist+ 'px,0, 0)';
-				startPos = totalDist;
-			}
-			touchInitPos = currentX;
-		});
+//var touchInitPos = 0;//手指初始位置
+//var startPos = 0;//移动开始的位置
+//var totalDist = 0;//移动的总距离
+//document.getElementById('ifr').addEventListener('touchstart',function (e) {
+//	if(e.touches.length !== 1){return;}//如果大于1个手指，则不处理
+//	touchInitPos = e.touches[0].pageX; // 每次move的触点位置
+//})
+//
+//document.getElementById('ifr').addEventListener('touchmove',function (e) {
+//			if(e.touches.length !== 1){return;}//如果大于1个手指，则不处理
+//			var currentX = e.touches[0].pageX;
+//			totalDist = startPos + currentX - touchInitPos;
+//			if (totalDist<5 ) {
+//				this.style.WebkitTransform='translate3d(' +  totalDist+ 'px,0, 0)';
+//				startPos = totalDist;
+//			}
+//			touchInitPos = currentX;
+//		});
 
 </script>
 <h1>hello</h1>

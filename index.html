@@ -1,42 +1,88 @@
 <!DOCTYPE html>
-<html>
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
-    <script src="../jquery.js"></script>
-    <script type="text/javascript" src="raphael-min.js"></script>
-    <style type="text/css">
-body {
-    font: 300 100.1% "Helvetica Neue", Helvetica, "Arial Unicode MS", Arial, sans-serif;
-}
-html{height:100%;}
-#holder {
-    background: #f1f1f1;
+    <meta name="viewport"
+          content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <script src="d3.v3.js"></script>
+    <script type="text/javascript" src="relation.js"></script>
 
-    height: 480px;
-    width: 640px;
-}
+    <script type="text/javascript" src="md5.js"></script>
 
-#holder {
-    position: absolute;
-    left:0  ;
-    top: 0;
-                -moz-border-radius: 10px;
-                -webkit-border-radius: 10px;
-                border: solid 1px #333;
-            }
-            p {
-                text-align: center;
-            }
+    <script type="text/javascript" src="timg.js"></script>
+    <script type="text/javascript" src="data.js"></script>
+    <style>
+
+        .link {
+            stroke: #64a5ff;
+            stroke-width: 1;
+        }
+
+        .node text {
+            pointer-events: none;
+            font: 10px sans-serif;
+        }
+
+        .relation {
+            color: #fff;
+            font-size: 10px;
+        }
+
+        #box {
+            margin: 0 auto;
+            width: 640px;
+            height:300px;
+            overflow: hidden;
+        }
     </style>
-</head>
-
+    </head>
 <body>
-<h1>hello start</h1>
-<div id="debugger" style="position:absolute;top:20px; left:20px;width:200px;height:50px;z-index:11111"></div>
-    <div id="holder"></div>
-<h1>hello start</h1>
-    <script type="text/javascript" src="index.js"></script>
-</body>
-</html>
+<div id="box"></div>
+<script>
+
+
+    // 数据
+    var json = {
+        "nodes": [
+            {name: "yansunrong1"},
+            {name: "yansunrong2"  },
+            {name: "yansunrong3",level :1},
+            {name: "yansunrong4"},
+            {name: "yansunrong5"},
+            {name: "yansunrong6"},
+            {name: "yansunrong7"},
+            {name: "yansunrong8",level:2},
+            {name: "yansunrong9",level:2},
+            {name: "yansunrong10",level:2},
+            {name: "yansunrong11",level:2}
+        ],
+        "links": [
+            {"source": 1, "target": 2, "value": 3, relation: "父子"},
+            {"source": 1, "target": 3, "value": 3, relation: "基友"},
+            {"source": 1, "target": 4, "value": 3, relation: "情人"},
+            {"source": 1, "target": 5, "value": 3, relation: "母子"},
+            {"source": 1, "target": 6, "value": 3, relation: "朋友"},
+            {"source": 2, "target": 7, "value": 3, relation: "基友"},
+            {"source": 2, "target": 8, "value": 3, relation: "基友"},
+            {"source": 2, "target": 9, "value": 3, relation: "基友"},
+            {"source": 2, "target": 10, "value": 3, relation: "基友"},
+            {"source": 0, "target": 10, "value": 3, relation: "基友"}
+        ]
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    Relation(jsons[2]);
+
+</script>
