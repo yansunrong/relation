@@ -102,19 +102,20 @@ var datas = [yangmi, zhaoliying, dengchao, dawei, zhangyunyi, lizhunji];
     }
 
 function locationHashChanged() {
-
+    
     var datas = ["yangmi", "zhaoliying", "dengchao", "dawei", "zhangyunyi", "lizhunji"];
     for(var i = 0, item; item=datas[i];i++){
         if(location.hash ==="#"+item){
              Relation(jsons[i],{width:800,height:600});
-             break;
+             return;
         }
     }
+    Relation(jsons[1],{width:800,height:600});
 }
-if(! window.onhashchange){
+if(!+[1,]){
     alert('本功能暂不支持低端浏览, 换chrome试试?')
-}
+}  else{　
 window.onhashchange = locationHashChanged;
-
- Relation(jsons[1],{width:800,height:600});
+locationHashChanged();
+}
 </script>
