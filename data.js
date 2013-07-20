@@ -421,9 +421,6 @@ for(var item in imglist){
         imglist[item] = timg(imglist[item],'c100_u100');
 }
 
-console.log(imglist);
-
-
 var datas = [yangmi, zhaoliying, dengchao, dawei, zhangyunyi, lizhunji];
 
 var jsons = [];

@@ -7,7 +7,7 @@
  */
 function Relation(json,options) {
     var supportsTouch = ('ontouchstart' in window) || window.DocumentTouch && g.doc instanceof DocumentTouch;
-
+    var container = d3.select("#box").html('');
     options = options || {};
     var width = options.width || 640,//画布的大小
         height = options.height || 300,//画布的大小
@@ -21,7 +21,7 @@ function Relation(json,options) {
         textG,//存放关系说明的容器
         node,//人物头像的整个结点容器
         force,//force的引用
-        svg = d3.select("#box").append("svg")
+        svg = container.append("svg")
             .attr("width", width)
             .attr("height", height)
             .attr("id", "svg")
