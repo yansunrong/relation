@@ -5,11 +5,12 @@
  * Time: 上午11:59
  * To change this template use File | Settings | File Templates.
  */
-function Relation(json) {
+function Relation(json,options) {
     var supportsTouch = ('ontouchstart' in window) || window.DocumentTouch && g.doc instanceof DocumentTouch;
 
-    var width = 640,//画布的大小
-        height = 300,//画布的大小
+    options = options || {};
+    var width = options.width || 640,//画布的大小
+        height = options.height || 300,//画布的大小
         distance = 150,//距离
         mousedown_node = null,// 当时按下的结点,用于控制缩放和大小
         trans = [0, 0], scale = 1, // 初始的位置和缩放的大小比例
@@ -98,16 +99,25 @@ function Relation(json) {
             return d.relation
         });
 
-
+    var isMove = false,o=null;
     //绘制结点
     node = g.selectAll(".node")
         .data(json.nodes)
         .enter().append("g")
         .attr("class", "node")
-        .on("touchstart", function () {
+        .on("touchstart", function (event) {
+            isMove = false;
+            o = d3.event.touches[0].target;
             vis.call(d3.behavior.zoom().on("zoom", null))
         })
+        .on("touchmove",function(){
+            isMove = true;
+        })
         .on("touchend", function () {
+            if( !isMove ) {
+                //console.log(d3.select(this).data()[0]["url"])
+                location = d3.select(this).data()[0]["url"]
+            }
             vis.call(d3.behavior.zoom().on("zoom", rescale).translate(trans).scale(scale));
         })
         .on("mousedown", function () {

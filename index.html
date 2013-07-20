@@ -30,14 +30,27 @@
 
         #box {
             margin: 0 auto;
-            width: 640px;
-            height:300px;
+            width: 800px;
+            height:600px;
             overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, .5);
         }
+        h1,p{margin: 10px auto;
+            width: 800px;
+            }
     </style>
     </head>
 <body>
+<h1>人物关系图 作者 : 严孙荣 <a href="http://weibo.com/yansunrong">微博</a> </h1>
 <div id="box"></div>
+<p>
+基于<a href="http://d3js.org/">d3js</a>完成. 官网
+</p>
+<p>
+raphaeljs版本 
+<a href="ra.html">链接</a>
+</p>
+
 <script>
 
 
@@ -83,6 +96,6 @@
 
 
 
-    Relation(jsons[2]);
+    Relation(jsons[1],{width:800,height:600});
 
 </script>
